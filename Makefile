@@ -359,6 +359,11 @@ purebytecode:
 # stags targets (was pfff_tags)
 #------------------------------------------------------------------------------
 
+find: $(LIBS) $(OBJS) find_functions.cmo
+	$(OCAMLC) $(CUSTOM) -o $@ $(SYSLIBS) $^
+find_functions.opt: $(LIBS:.cma=.cmxa) $(OPTOBJS) find_functions.cmx
+	$(OCAMLOPT) $(STATIC) -o $@ $(SYSLIBS:.cma=.cmxa) $^
+
 stags: $(LIBS) $(OBJS) main_stags.cmo
 	$(OCAMLC) $(CUSTOM) -o $@ $(SYSLIBS) $^
 stags.opt: $(LIBS:.cma=.cmxa) $(OPTOBJS) main_stags.cmx
