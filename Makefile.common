@@ -1,7 +1,7 @@
 # -*- makefile -*-
 
 ##############################################################################
-# Prelude 
+# Prelude
 ##############################################################################
 
 # This file assumes the "includer" will have set a few variables and then do a
@@ -45,9 +45,9 @@ OPTOBJS?= $(SRC:.ml=.cmx)
 #-44 allow shadow module identifier (TODO: fix them)
 #-48 allow eliminating optional arguments, unclear how to fix without wide
 #    changes
-WARNING_FLAGS?=-w +A-4-29-6-45-41-44-48 -warn-error +a 
+WARNING_FLAGS?=-w +A-4-29-6-45-41-44-48
 
-OCAMLCFLAGS=-g -thread -dtypes $(WARNING_FLAGS) $(OCAMLCFLAGS_EXTRA) 
+OCAMLCFLAGS=-g -thread -dtypes $(WARNING_FLAGS) $(OCAMLCFLAGS_EXTRA)
 
 # This flag is also used in subdirectories so don't change its name here
 # the -w y is to silence errors on the visitor_xxx files with the unused
@@ -82,7 +82,7 @@ SYNCWEB=~/github/syncweb/syncweb $(SYNCFLAGS)
 NOWEB=~/github/syncweb/scripts/noweblatex
 OCAMLDOC=ocamldoc $(INCLUDES)
 
-PDFLATEX=pdflatex --shell-escape 
+PDFLATEX=pdflatex --shell-escape
 
 lpclean::
 	rm -f *.aux *.toc *.log *.brf *.out
@@ -143,7 +143,7 @@ reinstall-findlib:
 .ml.cmx:
 	$(OCAMLOPT)  -c $<
 
-.ml.mldepend: 
+.ml.mldepend:
 	$(OCAMLC) -i $<
 
 clean::

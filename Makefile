@@ -696,3 +696,10 @@ diff_darcs:
 	@echo "----- REPO:" top "----------------------"
 	darcs diff -u
 	set -e; for i in $(DARCSFORESTS); do cd $$i; echo "----- REPO:" $$i "-----------------"; darcs diff -u; cd $(TOP); done
+
+copy:
+	cp pfff /usr/local/bin/adit
+	cp scheck /usr/local/bin/adit
+	cp sgrep /usr/local/bin/adit
+	cp spatch /usr/local/bin/adit
+	cp stags /usr/local/bin/adit

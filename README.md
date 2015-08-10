@@ -1,7 +1,5 @@
 
-                              pfff
-
-[![Build Status](https://travis-ci.org/facebook/pfff.svg?branch=master)](https://travis-ci.org/facebook/pfff)
+# pfff
 
 pfff is a set of tools and APIs to perform static analysis, code
 visualizations, code navigations, or style-preserving source-to-source
