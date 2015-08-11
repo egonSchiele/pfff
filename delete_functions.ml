@@ -13,9 +13,7 @@ let remove_all_tokens_visitor toks = toks +> List.iter (fun tok ->
         tok.PI.transfo <- PI.Remove;
     )
 
-(* visit the AST and remove the body of the specified function *)
-let visitor func_to_delete = V.mk_visitor { V.default_visitor with
-  V.kfunc_def = (fun (k, _) stmt ->
+let func_def_visitor func_to_delete = fun (k, _) stmt ->
     match stmt with
     | func ->
         if Ast_php.str_of_ident func.f_name <> func_to_delete
@@ -26,7 +24,11 @@ let visitor func_to_delete = V.mk_visitor { V.default_visitor with
          * use the Entity constructor to make it an `any`. *)
         else remove_all_tokens_visitor (Lib_parsing_php.ii_of_any (Entity (FunctionE func)))
     | _ -> k stmt
-    );
+
+
+(* visit the AST and remove the body of the specified function *)
+let visitor func_to_delete = V.mk_visitor { V.default_visitor with
+  V.kfunc_def = func_def_visitor func_to_delete
 }
 
 let delete_function file func_to_delete =
